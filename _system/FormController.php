@@ -1,13 +1,13 @@
 <?php
-namespace Beerfest\Core\Form;
+namespace MicroFrame\Core\Form;
 
-use Beerfest\Core\Form\Element;
-use Beerfest\Core\Form\Text;
-use Beerfest\Core\Form\Textarea;
-use Beerfest\Core\Form\Select;
-use Beerfest\Core\Form\Button;
-use Beerfest\Core\Form\File;
-use Beerfest\Core\Request;
+use MicroFrame\Core\Form\Element;
+use MicroFrame\Core\Form\Text;
+use MicroFrame\Core\Form\Textarea;
+use MicroFrame\Core\Form\Select;
+use MicroFrame\Core\Form\Button;
+use MicroFrame\Core\Form\File;
+use MicroFrame\Core\Request;
 
 abstract class Controller
 {
@@ -70,7 +70,7 @@ abstract class Controller
     {
         $this->strName = $strName;
         $this->strMethod = $strMethod;
-        $this->strAction = '/roemedia/beerfest/' . $strAction;
+        $this->strAction = STR_ROOT . $strAction;
         $this->setReferer(Request::getReferer());
     }// __construct
 

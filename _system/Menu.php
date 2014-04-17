@@ -1,8 +1,8 @@
 <?php
-namespace Beerfest\Menu;
+namespace MicroFrame\Menu;
 
-use Beerfest\Core\Auth;
-use Beerfest\User\User;
+use MicroFrame\Core\Auth;
+use MicroFrame\User\User;
 
 class Menu
 {
@@ -167,7 +167,7 @@ class Menu
                 $strId = $objActiveFest->getCryptId();
                 if($objActiveFest)
                 {
-                    $this->addMenuItem('fest:' . $strId, $objActiveFest->get(\Beerfest\Fest\FestDB::COL_NAME));
+                    $this->addMenuItem('fest:' . $strId, $objActiveFest->get(\MicroFrame\Fest\FestDB::COL_NAME));
                     $this->addMenuItem('fest:' . $strId . '/items', _ITEMS);
                     if($objUser->isAdmin())
                     {

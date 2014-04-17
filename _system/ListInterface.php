@@ -1,5 +1,5 @@
 <?php
-namespace Beerfest\Core\HtmlList;
+namespace MicroFrame\Core\HtmlList;
 
 interface ListInterface
 {

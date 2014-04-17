@@ -1,8 +1,8 @@
 <?php
-namespace Beerfest\Core;
+namespace MicroFrame\Core;
 
-use Beerfest\User\UserDB;
-use Beerfest\User\User;
+use MicroFrame\User\UserDB;
+use MicroFrame\User\User;
 
 class Auth
 {
@@ -20,7 +20,7 @@ class Auth
         $blnValid = false;
         $objDb = new UserDB();
         $strWhere = sql_where(UserDB::COL_USERNAME, $strUsername);
-        $strWhere .= ' AND ' . sql_where(UserDB::COL_PASSWORD, \Beerfest\Core\Crypt::encrypt($strPassword));
+        $strWhere .= ' AND ' . sql_where(UserDB::COL_PASSWORD, \MicroFrame\Core\Crypt::encrypt($strPassword));
 
         $aryResult = $objDb->select(array(UserDB::COL_ID), $strWhere);
 
@@ -108,11 +108,11 @@ class Auth
      * Get active user
      *
      * @since 22. February 2014, v. 1.00
-     * @return \Beerfest\User\User
+     * @return \MicroFrame\User\User
      */
     public static function getActiveUser()
     {
-        return new \Beerfest\User\User($_COOKIE['logged_in']);
+        return new \MicroFrame\User\User($_COOKIE['logged_in']);
     }// getActiveUser
 
 

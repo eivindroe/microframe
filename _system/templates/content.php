@@ -3,7 +3,7 @@
         <nav id="nav-menu">
             <ul>
                 <?php
-                $objMenu = new \Beerfest\Menu\Menu();
+                $objMenu = new \MicroFrame\Menu\Menu();
                 echo $objMenu->getItemsAsHtml();
                 ?>
             </ul>

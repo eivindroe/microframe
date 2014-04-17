@@ -1,5 +1,5 @@
 <?php
-namespace Beerfest\Core\Form;
+namespace MicroFrame\Core\Form;
 
 interface Element
 {

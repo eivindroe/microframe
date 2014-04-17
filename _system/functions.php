@@ -78,7 +78,7 @@ function crypt_sql($strKey, $strValue)
  */
 function getUserId()
 {
-    $objAuth = new Beerfest\Core\Auth();
+    $objAuth = new MicroFrame\Core\Auth();
     return $objAuth->getActiveUserId();
 }// getUserId
 

@@ -1,5 +1,5 @@
 <?php
-namespace Beerfest\Core;
+namespace MicroFrame\Core;
 
 abstract class Navigation
 {

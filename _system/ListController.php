@@ -1,10 +1,10 @@
 <?php
-namespace Beerfest\Core\HtmlList;
+namespace MicroFrame\Core\HtmlList;
 
-use Beerfest\Core\HtmlList\Navigation as ListNavigation;
-use Beerfest\Core\HtmlList\Column;
-use Beerfest\Core\HtmlList\Row;
-use Beerfest\Core\Button;
+use MicroFrame\Core\HtmlList\Navigation as ListNavigation;
+use MicroFrame\Core\HtmlList\Column;
+use MicroFrame\Core\HtmlList\Row;
+use MicroFrame\Core\Button;
 
 abstract class Controller implements ListInterface
 {
@@ -264,7 +264,7 @@ abstract class Controller implements ListInterface
     /**
      * Add button new in list
      *
-     * @param string $strModule Beerfest module
+     * @param string $strModule Module
      *
      * @since 25. February 2014, v. 1.00
      * @return Button

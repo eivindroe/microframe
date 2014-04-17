@@ -1,8 +1,8 @@
 <?php
-namespace Beerfest\Core\Form;
+namespace MicroFrame\Core\Form;
 
-use Beerfest\Core\Form\Select;
-use Beerfest\Core\Form\Element;
+use MicroFrame\Core\Form\Select;
+use MicroFrame\Core\Form\Element;
 
 abstract class FormElement implements Element
 {

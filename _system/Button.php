@@ -1,5 +1,5 @@
 <?php
-namespace Beerfest\Core;
+namespace MicroFrame\Core;
 
 class Button
 {

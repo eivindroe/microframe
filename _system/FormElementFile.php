@@ -1,7 +1,7 @@
 <?php
-namespace Beerfest\Core\Form;
+namespace MicroFrame\Core\Form;
 
-use Beerfest\Core\Form\FormElement;
+use MicroFrame\Core\Form\FormElement;
 
 class File extends FormElement
 {

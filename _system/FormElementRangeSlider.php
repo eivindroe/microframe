@@ -1,8 +1,8 @@
 <?php
-namespace Beerfest\Core\Form;
+namespace MicroFrame\Core\Form;
 
-use Beerfest\Core\Form\FormElement;
-use Beerfest\Core\Form\Range;
+use MicroFrame\Core\Form\FormElement;
+use MicroFrame\Core\Form\Range;
 
 class RangeSlider extends FormElement
 {

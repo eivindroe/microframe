@@ -1,7 +1,7 @@
 <?php
-namespace Beerfest\Core\HtmlList;
+namespace MicroFrame\Core\HtmlList;
 
-use Beerfest\Core\HtmlList\Controller;
+use MicroFrame\Core\HtmlList\Controller;
 
 class HtmlList extends Controller
 {

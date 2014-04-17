@@ -1,5 +1,5 @@
 <?php
-namespace Beerfest\Core;
+namespace MicroFrame\Core;
 
 class Request
 {
@@ -34,5 +34,22 @@ class Request
         return $strReferer;
     }// getReferer
 
+
+    /**
+     * Redirect to url
+     *
+     * @param null|string $strRedirect URL to redirect to. If none defined referer will be used (@see getReferer()
+     *
+     * @since 17. April 2014, v. 1.00
+     * @return void
+     */
+    public function redirect($strRedirect = null)
+    {
+        if(!$strRedirect)
+        {
+            $strRedirect = $this->getReferer();
+        }
+        header('Location: ' . $strRedirect);
+    }// redirect
 
 }// Request
