@@ -1,36 +1,36 @@
 <?php
-namespace MicroFrame\Form\Elements;
+    namespace MicroFrame\Form\Elements;
 
-use MicroFrame\Form\AbstractElement;
+    use MicroFrame\Form\AbstractElement;
 
-class Text extends AbstractElement
-{
-    /**
-     * Constructor
-     *
-     * @param string $strName Text field name
-     * @param string $strLabel Text field label
-     *
-     * @since 22. February 2014, v. 1.00
-     */
-    public function __construct($strName = '', $strLabel = '')
+    class Text extends AbstractElement
     {
-        parent::__construct(AbstractElement::ELEMENT_TEXT, $strName, $strLabel);
-        return $this;
-    }// __construct
+        /**
+         * Constructor
+         *
+         * @param string $strName Text field name
+         * @param string $strLabel Text field label
+         *
+         * @since 22. February 2014, v. 1.00
+         */
+        public function __construct($strName = '', $strLabel = '')
+        {
+            parent::__construct(AbstractElement::ELEMENT_TEXT, $strName, $strLabel);
+            return $this;
+        }// __construct
 
 
-    /**
-     * Get text field html
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return string
-     */
-    public function getHtml()
-    {
-        return $this->getLabelAsHtml() . '<input type="text" name="' . $this->getName() . '"' . $this->getValueHtml() .
-        $this->getPlaceholderHtml() . $this->getAttributesHtml() . ' />';
-    }// getHtml
+        /**
+         * Get text field html
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return string
+         */
+        public function getHtml()
+        {
+            return $this->getLabelAsHtml() . '<input type="text" name="' . $this->getName() . '"' . $this->getValueHtml() .
+            $this->getPlaceholderHtml() . $this->getAttributesHtml() . ' />';
+        }// getHtml
 
 
-}// Text
+    }// Text

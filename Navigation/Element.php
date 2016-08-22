@@ -1,12 +1,12 @@
 <?php
-namespace MicroFrame\Core;
+namespace MicroFrame\Navigation;
 
 use MicroFrame\Config\Config;
 
-class NavigationElement
+class Element
 {
     /**
-     * Navigation constants
+     * Controller constants
      */
     const STR_LABEL = 'label';
     const STR_PATH = 'path';
@@ -60,4 +60,4 @@ class NavigationElement
     }// getHtml
 
 
-}// NavigationElement
+}// Element

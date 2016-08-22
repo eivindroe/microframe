@@ -1,356 +1,356 @@
 <?php
-namespace MicroFrame\StructuredList;
+    namespace MicroFrame\StructuredList;
 
-class Column
-{
-    /**
-     * Alignments
-     * @var string
-     */
-    const ALIGN_LEFT = 'left';
-    const ALIGN_CENTER = 'center';
-    const ALIGN_RIGHT = 'right';
-
-    /**
-     * Priorities
-     * @var string
-     */
-    const PRIORITY_1 = 1;
-    const PRIORITY_2 = 2;
-    const PRIORITY_3 = 3;
-    const PRIORITY_4 = 4;
-    const PRIORITY_5 = 5;
-
-    /**
-     * Column name
-     * @var string
-     */
-    private $strName;
-
-    /**
-     * Column title
-     * @var string
-     */
-    private $strTitle;
-
-    /**
-     * Flag date
-     * @var boolean
-     */
-    private $blnIsDate = false;
-
-    /**
-     * Date format
-     * @var string
-     */
-    private $strDateFormat = 'l j. F Y H:i:s';
-
-    /**
-     * Column alignment
-     * @var string
-     */
-    private $strAlign = self::ALIGN_LEFT;
-
-
-    /**
-     * Column priority
-     * @var integer
-     */
-    private $intPriority = self::PRIORITY_1;
-
-
-    /**
-     * Column width
-     * @var mixed
-     */
-    private $mxdWidth = '';
-
-
-    /**
-     * Column attributes
-     * @var array
-     */
-    private $aryAttributes = array();
-
-
-    /**
-     * Constructor
-     *
-     * @param string $strName Column name
-     * @param string $strTitle Column title
-     *
-     * @since 22. February 2014, v. 1.00
-     */
-    public function __construct($strName, $strTitle)
+    class Column
     {
-        $this->strName = $strName;
-        $this->strTitle = $strTitle;
-        return $this;
-    }// __construct
+        /**
+         * Alignments
+         * @var string
+         */
+        const ALIGN_LEFT = 'left';
+        const ALIGN_CENTER = 'center';
+        const ALIGN_RIGHT = 'right';
 
-    /**
-     * Set column alignment
-     *
-     * @param string $strAlign Alignment (ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT)
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return string Alignment
-     */
-    public function setAlignment($strAlign)
-    {
-        $aryValid = array(self::ALIGN_LEFT, self::ALIGN_CENTER, self::ALIGN_RIGHT);
-        if(in_array($strAlign, $aryValid))
+        /**
+         * Priorities
+         * @var string
+         */
+        const PRIORITY_1 = 1;
+        const PRIORITY_2 = 2;
+        const PRIORITY_3 = 3;
+        const PRIORITY_4 = 4;
+        const PRIORITY_5 = 5;
+
+        /**
+         * Column name
+         * @var string
+         */
+        private $strName;
+
+        /**
+         * Column title
+         * @var string
+         */
+        private $strTitle;
+
+        /**
+         * Flag date
+         * @var boolean
+         */
+        private $blnIsDate = false;
+
+        /**
+         * Date format
+         * @var string
+         */
+        private $strDateFormat = 'l j. F Y H:i:s';
+
+        /**
+         * Column alignment
+         * @var string
+         */
+        private $strAlign = self::ALIGN_LEFT;
+
+
+        /**
+         * Column priority
+         * @var integer
+         */
+        private $intPriority = self::PRIORITY_1;
+
+
+        /**
+         * Column width
+         * @var mixed
+         */
+        private $mxdWidth = '';
+
+
+        /**
+         * Column attributes
+         * @var array
+         */
+        private $aryAttributes = array();
+
+
+        /**
+         * Constructor
+         *
+         * @param string $strName Column name
+         * @param string $strTitle Column title
+         *
+         * @since 22. February 2014, v. 1.00
+         */
+        public function __construct($strName, $strTitle)
         {
-            $this->strAlign = $strAlign;
-        }
-        return $this->strAlign;
-    }// setAlignment
+            $this->strName = $strName;
+            $this->strTitle = $strTitle;
+            return $this;
+        }// __construct
 
-
-    /**
-     * Get column alignment
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return string Column alignment
-     */
-    private function getAlignment()
-    {
-        return $this->strAlign;
-    }// getAlignment
-
-
-    /**
-     * Set column attribute
-     *
-     * @param string $strKey Attribute key
-     * @param string $strValue Attribute value
-     *
-     * @since 29. February 2014, v. 1.00
-     * @return string Column attribute value
-     */
-    public function setAttribute($strKey, $strValue)
-    {
-        $aryAttributes = $this->getAttributes();
-        if(isset($aryAttributes[$strKey]))
+        /**
+         * Set column alignment
+         *
+         * @param string $strAlign Alignment (ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT)
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return string Alignment
+         */
+        public function setAlignment($strAlign)
         {
-            if($strKey == 'class' || $strKey == 'style')
+            $aryValid = array(self::ALIGN_LEFT, self::ALIGN_CENTER, self::ALIGN_RIGHT);
+            if(in_array($strAlign, $aryValid))
             {
-                $strValue = $aryAttributes[$strKey] . ' ' . $strValue;
+                $this->strAlign = $strAlign;
             }
-            else
+            return $this->strAlign;
+        }// setAlignment
+
+
+        /**
+         * Get column alignment
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return string Column alignment
+         */
+        private function getAlignment()
+        {
+            return $this->strAlign;
+        }// getAlignment
+
+
+        /**
+         * Set column attribute
+         *
+         * @param string $strKey Attribute key
+         * @param string $strValue Attribute value
+         *
+         * @since 29. February 2014, v. 1.00
+         * @return string Column attribute value
+         */
+        public function setAttribute($strKey, $strValue)
+        {
+            $aryAttributes = $this->getAttributes();
+            if(isset($aryAttributes[$strKey]))
             {
-                unset($this->aryAttributes[$strKey]);
+                if($strKey == 'class' || $strKey == 'style')
+                {
+                    $strValue = $aryAttributes[$strKey] . ' ' . $strValue;
+                }
+                else
+                {
+                    unset($this->aryAttributes[$strKey]);
+                }
             }
-        }
-        $this->aryAttributes[$strKey] = $strValue;
-        return $this->aryAttributes[$strKey];
-    }// setAttribute
+            $this->aryAttributes[$strKey] = $strValue;
+            return $this->aryAttributes[$strKey];
+        }// setAttribute
 
 
-    /**
-     * Set column attributes
-     *
-     * @param array $aryAttributes Attributes
-     *
-     * @since 29. February 2014, v. 1.00
-     * @return array Column attributes
-     */
-    public function setAttributes($aryAttributes)
-    {
-        if(is_array($aryAttributes))
+        /**
+         * Set column attributes
+         *
+         * @param array $aryAttributes Attributes
+         *
+         * @since 29. February 2014, v. 1.00
+         * @return array Column attributes
+         */
+        public function setAttributes($aryAttributes)
         {
-            foreach($aryAttributes as $strKey => $strValue)
+            if(is_array($aryAttributes))
             {
-                $this->setAttribute($strKey, $strValue);
+                foreach($aryAttributes as $strKey => $strValue)
+                {
+                    $this->setAttribute($strKey, $strValue);
+                }
             }
-        }
-        return $this->getAttributes();
-    }// setAttributes
+            return $this->getAttributes();
+        }// setAttributes
 
 
-    /**
-     * Get column attributes
-     *
-     * @since 29. February 2014, v. 1.00
-     * @return array Column attributes
-     */
-    private function getAttributes()
-    {
-        return $this->aryAttributes;
-    }// getAttributes
-
-
-    /**
-     * Get column attributes as html
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return string Column attributes as html
-     */
-    public function getAttributesAsHtml()
-    {
-        $this->setAttribute('class', 'text-' . $this->getAlignment());
-        $this->setAttribute('data-priority', $this->getPriority());
-        $mxdWidth = $this->getWidth();
-        if($mxdWidth)
+        /**
+         * Get column attributes
+         *
+         * @since 29. February 2014, v. 1.00
+         * @return array Column attributes
+         */
+        private function getAttributes()
         {
-            $this->setAttribute('style', 'width:' . $mxdWidth . ';');
-        }
+            return $this->aryAttributes;
+        }// getAttributes
 
-        $strAttributes = '';
-        $aryAttributes = $this->getAttributes();
 
-        if(count($aryAttributes))
+        /**
+         * Get column attributes as html
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return string Column attributes as html
+         */
+        public function getAttributesAsHtml()
         {
-            foreach($aryAttributes as $strKey => $strValue)
+            $this->setAttribute('class', 'text-' . $this->getAlignment());
+            $this->setAttribute('data-priority', $this->getPriority());
+            $mxdWidth = $this->getWidth();
+            if($mxdWidth)
             {
-                $strAttributes .= ' ' . $strKey . '="' . $strValue . '"';
+                $this->setAttribute('style', 'width:' . $mxdWidth . ';');
             }
-        }
-        return $strAttributes;
-    }// getAttributesAsHtml
+
+            $strAttributes = '';
+            $aryAttributes = $this->getAttributes();
+
+            if(count($aryAttributes))
+            {
+                foreach($aryAttributes as $strKey => $strValue)
+                {
+                    $strAttributes .= ' ' . $strKey . '="' . $strValue . '"';
+                }
+            }
+            return $strAttributes;
+        }// getAttributesAsHtml
 
 
-    /**
-     * Flag column as date
-     *
-     * @param boolean $blnIsDate True/false
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return boolean True if date, false otherwise
-     */
-    public function setIsDate($blnIsDate)
-    {
-        if(is_bool($blnIsDate))
+        /**
+         * Flag column as date
+         *
+         * @param boolean $blnIsDate True/false
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return boolean True if date, false otherwise
+         */
+        public function setIsDate($blnIsDate)
         {
-            $this->blnIsDate = $blnIsDate;
-        }
-        return $this->blnIsDate;
-    }// setIsDate
+            if(is_bool($blnIsDate))
+            {
+                $this->blnIsDate = $blnIsDate;
+            }
+            return $this->blnIsDate;
+        }// setIsDate
 
 
-    /**
-     * Check if column is date
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return boolean True if date, false otherwise
-     */
-    public function getIsDate()
-    {
-        return $this->blnIsDate;
-    }// getIsDate
-
-
-    /**
-     * Set column date format
-     *
-     * @param string $strFormat Date format
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return string Column date format
-     * @TODO Add date format validation
-     */
-    public function setDateFormat($strFormat)
-    {
-        $this->strDateFormat = $strFormat;
-        return $this->strDateFormat;
-    }// setDateFormat
-
-
-    /**
-     * Get column date format
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return string Column date format
-     */
-    public function getDateFormat()
-    {
-        return $this->strDateFormat;
-    }// getDateFormat
-
-
-    /**
-     * Get column title
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return string Column title
-     */
-    public function getTitle()
-    {
-        return $this->strTitle;
-    }// getTitle
-
-
-    /**
-     * Set column priority
-     *
-     * @param integer $intPriority Column priority
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return integer Column priority
-     */
-    public function setPriority($intPriority)
-    {
-        if(is_numeric($intPriority))
+        /**
+         * Check if column is date
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return boolean True if date, false otherwise
+         */
+        public function getIsDate()
         {
-            $this->intPriority = $intPriority;
-        }
-        return $this->intPriority;
-    }// setPriority
+            return $this->blnIsDate;
+        }// getIsDate
 
 
-    /**
-     * Get column priority
-     *
-     * @since 22. February 2014, v. 1.00
-     * @return integer Column priority
-     */
-    private function getPriority()
-    {
-        return $this->intPriority;
-    }// getPriority
-
-
-    /**
-     * Get column width
-     *
-     * @since 29. February 2014, v. 1.00
-     * @return mixed Column width
-     */
-    private function getWidth()
-    {
-        return $this->mxdWidth;
-    }// getWidth
-
-
-    /**
-     * Set column width
-     *
-     * @param mixed $mxdWidth Column width
-     *
-     * @since 29. February 2014, v. 1.00
-     * @return void
-     */
-    public function setWidth($mxdWidth)
-    {
-        $this->mxdWidth = $mxdWidth;
-    }// setWidth
-
-
-    /**
-     * Set auto fit column
-     *
-     * @param boolean $blnAutoFit True/false
-     *
-     * @since 29. February 2014, v. 1.00
-     * @return void
-     */
-    public function setAutoFit($blnAutoFit)
-    {
-        if(is_bool($blnAutoFit) && $blnAutoFit === true)
+        /**
+         * Set column date format
+         *
+         * @param string $strFormat Date format
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return string Column date format
+         * @TODO Add date format validation
+         */
+        public function setDateFormat($strFormat)
         {
-            $this->setAttribute('style', 'width: 1px; white-space: nowrap');
-        }
-    }// setAutoFit
+            $this->strDateFormat = $strFormat;
+            return $this->strDateFormat;
+        }// setDateFormat
 
 
-}// Column
+        /**
+         * Get column date format
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return string Column date format
+         */
+        public function getDateFormat()
+        {
+            return $this->strDateFormat;
+        }// getDateFormat
+
+
+        /**
+         * Get column title
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return string Column title
+         */
+        public function getTitle()
+        {
+            return $this->strTitle;
+        }// getTitle
+
+
+        /**
+         * Set column priority
+         *
+         * @param integer $intPriority Column priority
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return integer Column priority
+         */
+        public function setPriority($intPriority)
+        {
+            if(is_numeric($intPriority))
+            {
+                $this->intPriority = $intPriority;
+            }
+            return $this->intPriority;
+        }// setPriority
+
+
+        /**
+         * Get column priority
+         *
+         * @since 22. February 2014, v. 1.00
+         * @return integer Column priority
+         */
+        private function getPriority()
+        {
+            return $this->intPriority;
+        }// getPriority
+
+
+        /**
+         * Get column width
+         *
+         * @since 29. February 2014, v. 1.00
+         * @return mixed Column width
+         */
+        private function getWidth()
+        {
+            return $this->mxdWidth;
+        }// getWidth
+
+
+        /**
+         * Set column width
+         *
+         * @param mixed $mxdWidth Column width
+         *
+         * @since 29. February 2014, v. 1.00
+         * @return void
+         */
+        public function setWidth($mxdWidth)
+        {
+            $this->mxdWidth = $mxdWidth;
+        }// setWidth
+
+
+        /**
+         * Set auto fit column
+         *
+         * @param boolean $blnAutoFit True/false
+         *
+         * @since 29. February 2014, v. 1.00
+         * @return void
+         */
+        public function setAutoFit($blnAutoFit)
+        {
+            if(is_bool($blnAutoFit) && $blnAutoFit === true)
+            {
+                $this->setAttribute('style', 'width: 1px; white-space: nowrap');
+            }
+        }// setAutoFit
+
+
+    }// Column

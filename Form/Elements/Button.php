@@ -1,54 +1,54 @@
 <?php
-namespace MicroFrame\Form\Elements;
+    namespace MicroFrame\Form\Elements;
 
-use MicroFrame\Form\AbstractElement;
+    use MicroFrame\Form\AbstractElement;
 
-class Button extends AbstractElement
-{
-    /**
-     * Button type
-     * @var string
-     */
-    const TYPE_SUBMIT = 'submit';
-    const TYPE_RESET = 'reset';
-    const TYPE_BUTTON = 'button';
-
-    /**
-     * Constructor
-     *
-     * @param string $strType
-     * @param string $strName
-     * @param string $strLabel
-     *
-     * $since 25. February 2014, v. 1.00
-     */
-    public function __construct($strType = self::TYPE_BUTTON, $strName = '', $strLabel = '')
+    class Button extends AbstractElement
     {
-        parent::__construct($strType, $strName, $strLabel);
-        $this->setValue($strLabel);
-        return $this;
-    }// __construct
+        /**
+         * Button type
+         * @var string
+         */
+        const TYPE_SUBMIT = 'submit';
+        const TYPE_RESET = 'reset';
+        const TYPE_BUTTON = 'button';
 
-
-    /**
-     * Get button html
-     *
-     * @since 25. February 2014, v. 1.00
-     * @return string Button html
-     */
-    public function getHtml()
-    {
-        if($this->getType() == self::TYPE_BUTTON)
+        /**
+         * Constructor
+         *
+         * @param string $strType
+         * @param string $strName
+         * @param string $strLabel
+         *
+         * $since 25. February 2014, v. 1.00
+         */
+        public function __construct($strType = self::TYPE_BUTTON, $strName = '', $strLabel = '')
         {
-            $strButton = '<button data-inline="true"' . $this->getAttributesHtml() . '>' . $this->getValue() .
-                '</button>';
-        }
-        else
+            parent::__construct($strType, $strName, $strLabel);
+            $this->setValue($strLabel);
+            return $this;
+        }// __construct
+
+
+        /**
+         * Get button html
+         *
+         * @since 25. February 2014, v. 1.00
+         * @return string Button html
+         */
+        public function getHtml()
         {
-            $strButton = '<input type="' . $this->getType() . '" data-inline="true"' . $this->getValueHtml() . ' />';
-        }
-        return $strButton;
-    }// getHtml
+            if($this->getType() == self::TYPE_BUTTON)
+            {
+                $strButton = '<button data-inline="true"' . $this->getAttributesHtml() . '>' . $this->getValue() .
+                    '</button>';
+            }
+            else
+            {
+                $strButton = '<input type="' . $this->getType() . '" data-inline="true"' . $this->getValueHtml() . ' />';
+            }
+            return $strButton;
+        }// getHtml
 
 
-}// Button
+    }// Button

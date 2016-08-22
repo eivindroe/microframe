@@ -1,20 +1,20 @@
 <?php
-namespace MicroFrame\System;
+    namespace MicroFrame\System;
 
-class Crypt
-{
-    /**
-     * Encrypt string
-     *
-     * @param string $strString String to encrypt
-     *
-     * @since 10. March 2014, v. 1.00
-     * @return string
-     */
-    public static function encrypt($strString)
+    class Crypt
     {
-        return md5($strString);
-    }// encrypt
+        /**
+         * Encrypt string
+         *
+         * @param string $strString String to encrypt
+         *
+         * @since 10. March 2014, v. 1.00
+         * @return string
+         */
+        public static function encrypt($strString)
+        {
+            return md5($strString);
+        }// encrypt
 
 
-}// Crypt
+    }// Crypt

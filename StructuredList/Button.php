@@ -1,176 +1,176 @@
 <?php
-namespace MicroFrame\StructuredList;
+    namespace MicroFrame\StructuredList;
 
-class Button
-{
-    /**
-     * Button key
-     * @var string
-     */
-    private $strKey;
-
-    /**
-     * Button label
-     * @var string
-     */
-    private $strLabel;
-
-    /**
-     * Button attributes
-     * @var array
-     */
-    private $aryAttributes = array('data-mini' => 'true');
-
-
-    /**
-     * Constructor
-     *
-     * @param string $strKey Button key
-     * @param string $strLabel Button label
-     *
-     * @since 25. February 2014, 1.00
-     */
-    public function __construct($strKey, $strLabel)
+    class Button
     {
-        $this->strKey = $strKey;
-        $this->strLabel = $strLabel;
-    }// __construct
+        /**
+         * Button key
+         * @var string
+         */
+        private $strKey;
+
+        /**
+         * Button label
+         * @var string
+         */
+        private $strLabel;
+
+        /**
+         * Button attributes
+         * @var array
+         */
+        private $aryAttributes = array('data-mini' => 'true');
 
 
-    /**
-     * Get button label
-     *
-     * @since 25. February 2014, 1.00
-     * @return string Button label
-     */
-    private function getLabel()
-    {
-        return $this->strLabel;
-    }// getLabel
-
-
-    /**
-     * Set button attributes
-     *
-     * @param array $aryAttributes Button attributes
-     *
-     * @since 25. February 2014, 1.00
-     * @return array Button attributes
-     */
-    public function setAttributes($aryAttributes)
-    {
-        if(is_array($aryAttributes))
+        /**
+         * Constructor
+         *
+         * @param string $strKey Button key
+         * @param string $strLabel Button label
+         *
+         * @since 25. February 2014, 1.00
+         */
+        public function __construct($strKey, $strLabel)
         {
-            if(count($this->aryAttributes))
+            $this->strKey = $strKey;
+            $this->strLabel = $strLabel;
+        }// __construct
+
+
+        /**
+         * Get button label
+         *
+         * @since 25. February 2014, 1.00
+         * @return string Button label
+         */
+        private function getLabel()
+        {
+            return $this->strLabel;
+        }// getLabel
+
+
+        /**
+         * Set button attributes
+         *
+         * @param array $aryAttributes Button attributes
+         *
+         * @since 25. February 2014, 1.00
+         * @return array Button attributes
+         */
+        public function setAttributes($aryAttributes)
+        {
+            if(is_array($aryAttributes))
             {
-                $this->aryAttributes = array_merge($this->aryAttributes, $aryAttributes);
+                if(count($this->aryAttributes))
+                {
+                    $this->aryAttributes = array_merge($this->aryAttributes, $aryAttributes);
+                }
+                else
+                {
+                    $this->aryAttributes = $aryAttributes;
+                }
             }
-            else
+            return $this->aryAttributes;
+        }// setAttributes
+
+
+        /**
+         * Get button attributes
+         *
+         * @since 25. February 2014, 1.00
+         * @return array Button attributes
+         */
+        private function getAttributes()
+        {
+            $aryAttributes = $this->aryAttributes;
+            return $aryAttributes;
+        }// getAttributes
+
+
+        /**
+         * Remove button attribute
+         *
+         * @param string $strAttr Button attribute
+         *
+         * @since 25. February 2014, 1.00
+         * @return void
+         */
+        private function removeAttribute($strAttr)
+        {
+            unset($this->aryAttributes[$strAttr]);
+        }// removeAttribute
+
+
+        /**
+         * Get button attributes as html
+         *
+         * @since 25. February 2014, v. 1.00
+         * @return string Button attributes as html
+         */
+        private function getAttributesHtml()
+        {
+            $strHtml = '';
+            $aryAttributes = $this->getAttributes();
+            if(count($aryAttributes))
             {
-                $this->aryAttributes = $aryAttributes;
+                foreach($aryAttributes as $strKey => $strValue)
+                {
+                    $strHtml .= ' ' . $strKey . '="' . $strValue . '"';
+                }
             }
-        }
-        return $this->aryAttributes;
-    }// setAttributes
+            return $strHtml;
+        }// getAttributesHtml
 
 
-    /**
-     * Get button attributes
-     *
-     * @since 25. February 2014, 1.00
-     * @return array Button attributes
-     */
-    private function getAttributes()
-    {
-        $aryAttributes = $this->aryAttributes;
-        return $aryAttributes;
-    }// getAttributes
-
-
-    /**
-     * Remove button attribute
-     *
-     * @param string $strAttr Button attribute
-     *
-     * @since 25. February 2014, 1.00
-     * @return void
-     */
-    private function removeAttribute($strAttr)
-    {
-        unset($this->aryAttributes[$strAttr]);
-    }// removeAttribute
-
-
-    /**
-     * Get button attributes as html
-     *
-     * @since 25. February 2014, v. 1.00
-     * @return string Button attributes as html
-     */
-    private function getAttributesHtml()
-    {
-        $strHtml = '';
-        $aryAttributes = $this->getAttributes();
-        if(count($aryAttributes))
+        /**
+         * Set button inline
+         *
+         * @param boolean $blnInline True if inline, false if not
+         *
+         * @since 25. February 2014, v. 1.00
+         * @return void
+         */
+        public function setInline($blnInline)
         {
-            foreach($aryAttributes as $strKey => $strValue)
+            if(is_bool($blnInline))
             {
-                $strHtml .= ' ' . $strKey . '="' . $strValue . '"';
+                $strInline = ($blnInline ? 'true' : 'false');
+                $this->removeAttribute('data-inline');
+                $this->setAttributes(array('data-inline' => $strInline));
             }
-        }
-        return $strHtml;
-    }// getAttributesHtml
+        }// setInline
 
 
-    /**
-     * Set button inline
-     *
-     * @param boolean $blnInline True if inline, false if not
-     *
-     * @since 25. February 2014, v. 1.00
-     * @return void
-     */
-    public function setInline($blnInline)
-    {
-        if(is_bool($blnInline))
+        /**
+         * Set use ajax
+         *
+         * @param boolean $blnAjax True if use ajax, false if not
+         *
+         * @since 25. February 2014, 1.00
+         * @return void
+         */
+        public function setAjax($blnAjax)
         {
-            $strInline = ($blnInline ? 'true' : 'false');
-            $this->removeAttribute('data-inline');
-            $this->setAttributes(array('data-inline' => $strInline));
-        }
-    }// setInline
+            if(is_bool($blnAjax))
+            {
+                $strAjax = ($blnAjax ? 'true' : 'false');
+                $this->removeAttribute('data-ajax');
+                $this->setAttributes(array('data-ajax' => $strAjax));
+            }
+        }// setAjax
 
 
-    /**
-     * Set use ajax
-     *
-     * @param boolean $blnAjax True if use ajax, false if not
-     *
-     * @since 25. February 2014, 1.00
-     * @return void
-     */
-    public function setAjax($blnAjax)
-    {
-        if(is_bool($blnAjax))
+        /**
+         * Get button html
+         *
+         * @since 25. February 2014, 1.00
+         * @return string Button html
+         */
+        public function getHtml()
         {
-            $strAjax = ($blnAjax ? 'true' : 'false');
-            $this->removeAttribute('data-ajax');
-            $this->setAttributes(array('data-ajax' => $strAjax));
-        }
-    }// setAjax
+            $strHtml = '<a data-role="button"' . $this->getAttributesHtml() . '>' . $this->getLabel()  . '</a>';
+            return $strHtml;
+        }// getHtml
 
 
-    /**
-     * Get button html
-     *
-     * @since 25. February 2014, 1.00
-     * @return string Button html
-     */
-    public function getHtml()
-    {
-        $strHtml = '<a data-role="button"' . $this->getAttributesHtml() . '>' . $this->getLabel()  . '</a>';
-        return $strHtml;
-    }// getHtml
-
-
-}// Button
+    }// Button

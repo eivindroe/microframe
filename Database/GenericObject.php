@@ -1,234 +1,234 @@
 <?php
-namespace MicroFrame\Database;
+    namespace MicroFrame\Database;
 
-use MicroFrame\System\Crypt;
+    use MicroFrame\System\Crypt;
 
-class GenericObject
-{
-    /**
-     * Object data
-     * @var array
-     */
-    private $aryData = array();
-
-    /**
-     * Database object
-     * @var object
-     */
-    private $objDb;
-
-    /**
-     * Object id
-     * @var mixed
-     */
-    private $mxdId;
-
-
-    /**
-     * Constructor
-     * @param Table $objDb Database table object
-     * @param mixed $mxdId Id
-     *
-     * @since 11. February 2014, v. 1.00
-     */
-    public function __construct(Table $objDb, $mxdId = null)
+    class GenericObject
     {
-        if(is_object($objDb))
-        {
-            $this->objDb = $objDb;
-        }
-        else
-        {
-            if(!class_exists($objDb))
-            {
-                echo 'Class "' . $objDb .'" does not exist';
-            }
-            $this->objDb = new $objDb();
-        }
+        /**
+         * Object data
+         * @var array
+         */
+        private $aryData = array();
 
-        if($mxdId)
+        /**
+         * Database object
+         * @var object
+         */
+        private $objDb;
+
+        /**
+         * Object id
+         * @var mixed
+         */
+        private $mxdId;
+
+
+        /**
+         * Constructor
+         * @param Table $objDb Database table object
+         * @param mixed $mxdId Id
+         *
+         * @since 11. February 2014, v. 1.00
+         */
+        public function __construct(Table $objDb, $mxdId = null)
         {
-            if(is_numeric($mxdId))
+            if(is_object($objDb))
+            {
+                $this->objDb = $objDb;
+            }
+            else
+            {
+                if(!class_exists($objDb))
+                {
+                    echo 'Class "' . $objDb .'" does not exist';
+                }
+                $this->objDb = new $objDb();
+            }
+
+            if($mxdId)
+            {
+                if(is_numeric($mxdId))
+                {
+                    $mxdId = Crypt::encrypt($mxdId);
+                }
+                $this->load($mxdId);
+            }
+        }// __construct
+
+
+        /**
+         * Get database object
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return Table
+         */
+        private function getDbObject()
+        {
+            return $this->objDb;
+        }// getDbObject
+
+
+        /**
+         * Load data from database object
+         *
+         * @param mixed $mxdId Object id
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return void
+         */
+        private function load($mxdId)
+        {
+            $this->mxdId = $mxdId;
+            $aryRawData = $this->getDbObject()->select(array_keys($this->getDbObject()->getTableColumns()),
+                crypt_sql($this->getTablePrimaryColumn(), $mxdId), '', 0, 1);
+
+            if($aryRawData)
+            {
+                $this->aryData = $aryRawData[0];
+            }
+        }// load
+
+
+        /**
+         * Get primary table column
+         *
+         * @since 20. February 2014, v. 1.00
+         * @return string Primary table column name
+         */
+        private function getTablePrimaryColumn()
+        {
+            $aryColumns = $this->getDbObject()->getTableColumns();
+            $strPrimaryKey = '';
+            foreach($aryColumns as $strKey => $aryProperties)
+            {
+                if(isset($aryProperties[Table::DB_PRIMARY]) && $aryProperties[Table::DB_PRIMARY] === true)
+                {
+                    $strPrimaryKey = $strKey;
+                    break;
+                }
+            }
+            return $strPrimaryKey;
+        }// getTablePrimaryColumn
+
+
+        /**
+         * Get object id
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return mixed|null Object id if set, null if not
+         */
+        public function getId()
+        {
+            return $this->get($this->getTablePrimaryColumn());
+        }// getId
+
+
+        /**
+         * Get crypted object id
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return string|null Object id if set, null if not
+         */
+        public function getCryptId()
+        {
+            $mxdId = $this->get($this->getTablePrimaryColumn());
+            if($mxdId)
             {
                 $mxdId = Crypt::encrypt($mxdId);
             }
-            $this->load($mxdId);
-        }
-    }// __construct
+            return $mxdId;
+        }// getCryptId
 
 
-    /**
-     * Get database object
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return Table
-     */
-    private function getDbObject()
-    {
-        return $this->objDb;
-    }// getDbObject
-
-
-    /**
-     * Load data from database object
-     *
-     * @param mixed $mxdId Object id
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return void
-     */
-    private function load($mxdId)
-    {
-        $this->mxdId = $mxdId;
-        $aryRawData = $this->getDbObject()->select(array_keys($this->getDbObject()->getTableColumns()),
-            crypt_sql($this->getTablePrimaryColumn(), $mxdId), '', 0, 1);
-
-        if($aryRawData)
+        /**
+         * Set value
+         *
+         * @param string $strKey Column key
+         * @param string $strValue Column value
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return void
+         */
+        public function set($strKey, $strValue)
         {
-            $this->aryData = $aryRawData[0];
-        }
-    }// load
-
-
-    /**
-     * Get primary table column
-     *
-     * @since 20. February 2014, v. 1.00
-     * @return string Primary table column name
-     */
-    private function getTablePrimaryColumn()
-    {
-        $aryColumns = $this->getDbObject()->getTableColumns();
-        $strPrimaryKey = '';
-        foreach($aryColumns as $strKey => $aryProperties)
-        {
-            if(isset($aryProperties[Table::DB_PRIMARY]) && $aryProperties[Table::DB_PRIMARY] === true)
+            $aryColumns = $this->objDb->getTableColumns();
+            if(!isset($aryColumns[$strKey]))
             {
-                $strPrimaryKey = $strKey;
-                break;
+                echo 'Key "' . $strKey . '" is not valid for table "' . $this->objDb->getTableName() . '"';
             }
-        }
-        return $strPrimaryKey;
-    }// getTablePrimaryColumn
+            $this->aryData[$strKey] = $strValue;
+        }// set
 
 
-    /**
-     * Get object id
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return mixed|null Object id if set, null if not
-     */
-    public function getId()
-    {
-        return $this->get($this->getTablePrimaryColumn());
-    }// getId
-
-
-    /**
-     * Get crypted object id
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return string|null Object id if set, null if not
-     */
-    public function getCryptId()
-    {
-        $mxdId = $this->get($this->getTablePrimaryColumn());
-        if($mxdId)
+        /**
+         * Get object value
+         *
+         * @param string $strKey Column key
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return string|boolean String value if exists, false if not
+         */
+        public function get($strKey)
         {
-            $mxdId = Crypt::encrypt($mxdId);
-        }
-        return $mxdId;
-    }// getCryptId
+            $mxdReturn = false;
+            if(isset($this->aryData[$strKey]))
+            {
+                $mxdReturn = $this->aryData[$strKey];
+            }
+            return $mxdReturn;
+        }// get
 
 
-    /**
-     * Set value
-     *
-     * @param string $strKey Column key
-     * @param string $strValue Column value
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return void
-     */
-    public function set($strKey, $strValue)
-    {
-        $aryColumns = $this->objDb->getTableColumns();
-        if(!isset($aryColumns[$strKey]))
+        /**
+         * Get all data
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return array Object data
+         */
+        public function getAll()
         {
-            echo 'Key "' . $strKey . '" is not valid for table "' . $this->objDb->getTableName() . '"';
-        }
-        $this->aryData[$strKey] = $strValue;
-    }// set
+            $aryData = $this->aryData;
+            $aryData['crypt_id'] = Crypt::encrypt($this->getId());
+            return $this->aryData;
+        }// getAll
 
 
-    /**
-     * Get object value
-     *
-     * @param string $strKey Column key
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return string|boolean String value if exists, false if not
-     */
-    public function get($strKey)
-    {
-        $mxdReturn = false;
-        if(isset($this->aryData[$strKey]))
+        /**
+         * Delete element
+         *
+         * @since 12. February 2014, v. 1.00
+         * @return boolean True if delete is successful, false if not
+         */
+        public function delete()
         {
-            $mxdReturn = $this->aryData[$strKey];
-        }
-        return $mxdReturn;
-    }// get
+            $objDb = $this->getDbObject();
+            return $objDb->delete(sql_where($this->getTablePrimaryColumn(), $this->getId()));
+        }// delete
 
 
-    /**
-     * Get all data
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return array Object data
-     */
-    public function getAll()
-    {
-        $aryData = $this->aryData;
-        $aryData['crypt_id'] = Crypt::encrypt($this->getId());
-        return $this->aryData;
-    }// getAll
-
-
-    /**
-     * Delete element
-     *
-     * @since 12. February 2014, v. 1.00
-     * @return boolean True if delete is successful, false if not
-     */
-    public function delete()
-    {
-        $objDb = $this->getDbObject();
-        return $objDb->delete(sql_where($this->getTablePrimaryColumn(), $this->getId()));
-    }// delete
-
-
-    /**
-     * Save object data to database
-     *
-     * @since 11. February 2014, v. 1.00
-     * @return integer
-     */
-    public function save()
-    {
-        $objDb = $this->getDbObject();
-        $aryData = $this->getAll();
-        if($this->getId())
+        /**
+         * Save object data to database
+         *
+         * @since 11. February 2014, v. 1.00
+         * @return integer
+         */
+        public function save()
         {
-            $intId = $objDb->update($aryData, sql_where($this->getTablePrimaryColumn(), $this->getId()));
-        }
-        else
-        {
-            $intId = $objDb->insert($aryData);
-            $this->set($this->getTablePrimaryColumn(), $intId);
-        }
+            $objDb = $this->getDbObject();
+            $aryData = $this->getAll();
+            if($this->getId())
+            {
+                $intId = $objDb->update($aryData, sql_where($this->getTablePrimaryColumn(), $this->getId()));
+            }
+            else
+            {
+                $intId = $objDb->insert($aryData);
+                $this->set($this->getTablePrimaryColumn(), $intId);
+            }
 
-        return $intId;
-    }// save
+            return $intId;
+        }// save
 
 
-}// GenericObject
+    }// GenericObject
