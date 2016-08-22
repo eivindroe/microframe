@@ -9,9 +9,9 @@
     require 'Database/functions.php';
 
     // Controllers
+require 'Form/iElement.php';
     require 'Form/AbstractElement.php';
     require 'Form/Controller.php';
-    require 'Form/iElement.php';
     require 'Form/Elements/Hidden.php';
     require 'Form/Elements/Text.php';
     require 'Form/Elements/Password.php';
