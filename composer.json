@@ -1,0 +1,14 @@
+{
+    "name": "eivindroe/microframe",
+    "description": "A small framework to create scheme and list",
+    "type": "project",
+    "require": {
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eivind Roee",
+            "email": "eivindroe@gmail.com"
+        }
+    ]
+}
