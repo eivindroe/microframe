@@ -1,8 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-
 class Button extends FormElement
 {
     /**
@@ -40,7 +38,8 @@ class Button extends FormElement
     {
         if($this->getType() == self::TYPE_BUTTON)
         {
-            $strButton = '<button data-inline="true"' . $this->getAttributesHtml() . '>' . $this->getValue() . '</button>';
+            $strButton = '<button data-inline="true"' . $this->getAttributesHtml() . '>' . $this->getValue() .
+                '</button>';
         }
         else
         {

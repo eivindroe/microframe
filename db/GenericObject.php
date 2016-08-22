@@ -1,7 +1,7 @@
 <?php
-namespace Beerfest;
+namespace MicroFrame\Database;
 
-use Beerfest\DBTable;
+use MicroFrame\Core\Crypt;
 
 class GenericObject
 {
@@ -26,12 +26,12 @@ class GenericObject
 
     /**
      * Constructor
-     * @param DBTable $objDb Database table object
+     * @param Table $objDb Database table object
      * @param mixed $mxdId Id
      *
      * @since 11. February 2014, v. 1.00
      */
-    public function __construct(DBTable $objDb, $mxdId = null)
+    public function __construct(Table $objDb, $mxdId = null)
     {
         if(is_object($objDb))
         {
@@ -50,7 +50,7 @@ class GenericObject
         {
             if(is_numeric($mxdId))
             {
-                $mxdId = \Beerfest\Core\Crypt::encrypt($mxdId);
+                $mxdId = Crypt::encrypt($mxdId);
             }
             $this->load($mxdId);
         }
@@ -61,7 +61,7 @@ class GenericObject
      * Get database object
      *
      * @since 11. February 2014, v. 1.00
-     * @return \Beerfest\DBTable
+     * @return Table
      */
     private function getDbObject()
     {
@@ -102,7 +102,7 @@ class GenericObject
         $strPrimaryKey = '';
         foreach($aryColumns as $strKey => $aryProperties)
         {
-            if(isset($aryProperties[DBTable::DB_PRIMARY]) && $aryProperties[DBTable::DB_PRIMARY] === true)
+            if(isset($aryProperties[Table::DB_PRIMARY]) && $aryProperties[Table::DB_PRIMARY] === true)
             {
                 $strPrimaryKey = $strKey;
                 break;
@@ -135,7 +135,7 @@ class GenericObject
         $mxdId = $this->get($this->getTablePrimaryColumn());
         if($mxdId)
         {
-            $mxdId = \Beerfest\Core\Crypt::encrypt($mxdId);
+            $mxdId = Crypt::encrypt($mxdId);
         }
         return $mxdId;
     }// getCryptId
@@ -189,7 +189,7 @@ class GenericObject
     public function getAll()
     {
         $aryData = $this->aryData;
-        $aryData['crypt_id'] = \Beerfest\Core\Crypt::encrypt($this->getId());
+        $aryData['crypt_id'] = Crypt::encrypt($this->getId());
         return $this->aryData;
     }// getAll
 

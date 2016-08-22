@@ -71,19 +71,6 @@ function crypt_sql($strKey, $strValue)
 
 
 /**
- * Get user id
- *
- * @since 22. February 2014, v. 1.00
- * @return integer User id
- */
-function getUserId()
-{
-    $objAuth = new MicroFrame\Core\Auth();
-    return $objAuth->getActiveUserId();
-}// getUserId
-
-
-/**
  * Decode ajax post request
  *
  * @param array $aryPost Posted values

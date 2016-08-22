@@ -1,8 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-
 class Range extends FormElement
 {
     /**
@@ -160,8 +158,9 @@ class Range extends FormElement
      */
     public function getHtml()
     {
-        return $this->getLabelAsHtml() . '<input type="range" name="' . $this->getName() . '"' . $this->getValueHtml() . $this->getPlaceholderHtml() .
-        $this->getMinAsHtml() . $this->getMaxAsHtml() . $this->getStepAsHtml() . $this->getAttributesHtml() . '" />';
+        return $this->getLabelAsHtml() . '<input type="range" name="' . $this->getName() . '"' . $this->getValueHtml() .
+            $this->getPlaceholderHtml() . $this->getMinAsHtml() . $this->getMaxAsHtml() . $this->getStepAsHtml() .
+            $this->getAttributesHtml() . '" />';
     }// getHtml
 
 

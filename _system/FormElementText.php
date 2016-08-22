@@ -1,8 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-
 class Text extends FormElement
 {
     /**
@@ -28,7 +26,8 @@ class Text extends FormElement
      */
     public function getHtml()
     {
-        return $this->getLabelAsHtml() . '<input type="text" name="' . $this->getName() . '"' . $this->getValueHtml() . $this->getPlaceholderHtml() . $this->getAttributesHtml() . ' />';
+        return $this->getLabelAsHtml() . '<input type="text" name="' . $this->getName() . '"' . $this->getValueHtml() .
+        $this->getPlaceholderHtml() . $this->getAttributesHtml() . ' />';
     }// getHtml
 
 

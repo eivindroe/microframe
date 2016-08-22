@@ -1,12 +1,7 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\Element;
-use MicroFrame\Core\Form\Text;
-use MicroFrame\Core\Form\Textarea;
-use MicroFrame\Core\Form\Select;
-use MicroFrame\Core\Form\Button;
-use MicroFrame\Core\Form\File;
+use MicroFrame\Config\Config;
 use MicroFrame\Core\Request;
 
 abstract class Controller
@@ -70,7 +65,7 @@ abstract class Controller
     {
         $this->strName = $strName;
         $this->strMethod = $strMethod;
-        $this->strAction = STR_ROOT . $strAction;
+        $this->strAction = Config::getRootPath() . $strAction;
         $this->setReferer(Request::getReferer());
     }// __construct
 

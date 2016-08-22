@@ -1,9 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\Select;
-use MicroFrame\Core\Form\Element;
-
 abstract class FormElement implements Element
 {
     /**
@@ -99,7 +96,8 @@ abstract class FormElement implements Element
     {
         $blnSkip = false;
         $strType = $this->getType();
-        if(in_array($strType, array(self::ELEMENT_BUTTON, self::ELEMENT_SUBMIT, self::ELEMENT_RESET, self::ELEMENT_HIDDEN)))
+        if(in_array($strType, array(self::ELEMENT_BUTTON, self::ELEMENT_SUBMIT,
+            self::ELEMENT_RESET, self::ELEMENT_HIDDEN)))
         {
             $blnSkip = true;
         }

@@ -1,8 +1,8 @@
 <?php
-namespace Beerfest;
+namespace MicroFrame\Database;
 
-interface DBTable_base
+interface TableBase
 {
     public function getTableName();
     public function getTableColumns();
-}// DBTable_base
+}// TableBase

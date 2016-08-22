@@ -1,5 +1,7 @@
 <?php
-namespace Beerfest;
+namespace MicroFrame\Database;
+
+use MicroFrame\Config\Config;
 
 class Database
 {
@@ -28,9 +30,14 @@ class Database
      */
     private function connect()
     {
-        $objConfig = new \Beerfest\Config();
+        $objConfig = new Config();
         $objConnection = new \mysqli();
-        $objConnection->connect($objConfig->getName(), $objConfig->getUsername(), $objConfig->getPassword(), $objConfig->getTableName());
+        $objConnection->connect(
+            $objConfig->getName(),
+            $objConfig->getUsername(),
+            $objConfig->getPassword(),
+            $objConfig->getTableName()
+        );
         $this->objConnection = $objConnection;
     }// connect
 

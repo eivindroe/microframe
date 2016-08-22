@@ -1,8 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-
 class Password extends FormElement
 {
     /**
@@ -29,8 +27,8 @@ class Password extends FormElement
      */
     public function getHtml()
     {
-        return $this->getLabelAsHtml() . '<input type="password" name="' . $this->getName() . '"' . $this->getValueHtml() .
-        $this->getPlaceholderHtml() . $this->getAttributesHtml() . ' />';
+        return $this->getLabelAsHtml() . '<input type="password" name="' . $this->getName() . '"' .
+            $this->getValueHtml() . $this->getPlaceholderHtml() . $this->getAttributesHtml() . ' />';
     }// getHtml
 
 

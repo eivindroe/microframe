@@ -1,8 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-
 class File extends FormElement
 {
     /**

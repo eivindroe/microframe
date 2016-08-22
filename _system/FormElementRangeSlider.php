@@ -1,9 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-use MicroFrame\Core\Form\Range;
-
 class RangeSlider extends FormElement
 {
     private $intMin = 1;
@@ -190,8 +187,10 @@ class RangeSlider extends FormElement
     {
         $strHtml = $this->getLabelAsHtml();
         $strHtml .= '<div data-role="rangeslider">';
-        $strHtml .= '<input type="' . $this->objLow->getType() . '" name="' . $this->objLow->getName() . '"' . $this->objLow->getValueHtml() . $this->getMinAsHtml() . $this->getMaxAsHtml() . ' />';
-        $strHtml .= '<input type="' . $this->objHigh->getType() . '" name="' . $this->objHigh->getName() . '"' . $this->objHigh->getValueHtml() . $this->getMinAsHtml() . $this->getMaxAsHtml() . ' />';
+        $strHtml .= '<input type="' . $this->objLow->getType() . '" name="' . $this->objLow->getName() . '"' .
+            $this->objLow->getValueHtml() . $this->getMinAsHtml() . $this->getMaxAsHtml() . ' />';
+        $strHtml .= '<input type="' . $this->objHigh->getType() . '" name="' . $this->objHigh->getName() . '"' .
+            $this->objHigh->getValueHtml() . $this->getMinAsHtml() . $this->getMaxAsHtml() . ' />';
         $strHtml .= '</div>';
         return $strHtml;
     }// getHtml

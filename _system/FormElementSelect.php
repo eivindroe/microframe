@@ -1,8 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-
 class Select extends FormElement
 {
     /**
@@ -162,7 +160,8 @@ class Select extends FormElement
         {
             foreach($aryOptions as $strValue => $strName)
             {
-                $strHtml .= '<option value="' . $strValue . '"' . $this->getSelectedHtml($strValue) . '>' . $strName . '</option>';
+                $strHtml .= '<option value="' . $strValue . '"' . $this->getSelectedHtml($strValue) . '>' .
+                    $strName . '</option>';
             }
         }
         $strHtml .= '</select><br />';

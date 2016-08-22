@@ -1,9 +1,14 @@
 <?php
-namespace Beerfest;
+namespace MicroFrame\Config;
 
 class Config
 {
     private $aryConfig;
+
+    public static function getRootPath()
+    {
+        return '';
+    }
 
     public function init()
     {
@@ -25,17 +30,17 @@ class Config
 
     public function getTableName()
     {
-        return 'beerfest';
+        return '';
     }
 
     public function getName()
     {
-        return 'localhost';
+        return '';
     }// getName
 
     public function getUsername()
     {
-        return 'root';
+        return '';
     }// getUsername
 
 

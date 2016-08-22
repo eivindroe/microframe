@@ -331,11 +331,13 @@ class Row
             $strValue .= '<div class="row-functions">';
             if($this->hasEdit())
             {
-                $strValue .= '<a href="#" class="edit" data-role="button" data-inline="true" data-mini="true" data-icon="edit" data-id="' . $this->getEdit() . '">' . _EDIT . '</a>';
+                $strValue .= '<a href="#" class="edit" data-role="button" data-inline="true" data-mini="true" ' .
+                    'data-icon="edit" data-id="' . $this->getEdit() . '">' . _EDIT . '</a>';
             }
             if($this->hasDelete())
             {
-                $strValue .= '<a href="#" class="delete" data-role="button" data-inline="true" data-mini="true" data-icon="delete" data-id="' . $this->getDelete() . '">' . _DELETE . '</a>';
+                $strValue .= '<a href="#" class="delete" data-role="button" data-inline="true" data-mini="true" ' .
+                    'data-icon="delete" data-id="' . $this->getDelete() . '">' . _DELETE . '</a>';
             }
             $strValue .= '</div>';
         }

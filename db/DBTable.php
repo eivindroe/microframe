@@ -1,10 +1,10 @@
 <?php
-namespace Beerfest;
+namespace MicroFrame\Database;
 
-use Beerfest\DBTable_base;
-use Beerfest\Database;
+use MicroFrame\Database\TableBase;
+use MicroFrame\Database\Database;
 
-abstract class DBTable implements DBTable_base
+abstract class Table implements TableBase
 {
     /**
      * Required column constant
@@ -31,7 +31,7 @@ abstract class DBTable implements DBTable_base
 
     /**
      * Database object
-     * @var \Beerfest\Database
+     * @var \MicroFrame\Database\Database
      */
     private $objDb;
 
@@ -368,16 +368,6 @@ abstract class DBTable implements DBTable_base
     {
         $this->update(array(self::COL_DELETED => time()), $strWhere);
         return true;
-        /*$blnSuccess = false;
-        $objConnection = $this->getConnection();
-        $strQuery = 'DELETE FROM `' . $this->getTableName() . '` WHERE ' . $strWhere;
-        $objDelete = mysqli_query($objConnection, $strQuery);
-        if($objDelete === false)
-        {
-            print_r($objConnection->error);
-        }
-        else $blnSuccess = true;
-        return $blnSuccess;*/
     }// delete
 
 

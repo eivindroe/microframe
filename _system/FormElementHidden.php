@@ -1,8 +1,6 @@
 <?php
 namespace MicroFrame\Core\Form;
 
-use MicroFrame\Core\Form\FormElement;
-
 class Hidden extends FormElement
 {
     /**
@@ -27,7 +25,8 @@ class Hidden extends FormElement
      */
     public function getHtml()
     {
-        return '<input type="hidden" name="' . $this->getName() . '"' . $this->getValueHtml() . $this->getPlaceholderHtml() . ' />';
+        return '<input type="hidden" name="' . $this->getName() . '"' . $this->getValueHtml() .
+            $this->getPlaceholderHtml() . ' />';
     }// getHtml
 
 

@@ -1,9 +1,6 @@
 <?php
 namespace MicroFrame\Core\HtmlList;
 
-use MicroFrame\Core\HtmlList\Navigation as ListNavigation;
-use MicroFrame\Core\HtmlList\Column;
-use MicroFrame\Core\HtmlList\Row;
 use MicroFrame\Core\Button;
 
 abstract class Controller implements ListInterface
