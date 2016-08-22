@@ -14,3 +14,6 @@
     const _VIEW = 'Vis';
     const _ADD = 'Ny';
     const _REQUIRED_FIELD = 'Obligatorisk felt';
+    const _PASSWORD = 'Passord';
+    const _LOG_IN = 'Login';
+    const _USERNAME = 'Username';
