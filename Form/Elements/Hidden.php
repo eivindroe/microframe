@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class Hidden extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class Hidden extends AbstractElement
 {
     /**
      * Constructor
@@ -12,7 +14,7 @@ class Hidden extends FormElement
      */
     public function __construct($strName = '')
     {
-        parent::__construct(FormElement::ELEMENT_HIDDEN, $strName, '');
+        parent::__construct(AbstractElement::ELEMENT_HIDDEN, $strName, '');
         return $this;
     }// __construct
 

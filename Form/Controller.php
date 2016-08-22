@@ -1,8 +1,17 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form;
 
 use MicroFrame\Config\Config;
-use MicroFrame\Core\Request;
+use MicroFrame\Form\Elements\Button;
+use MicroFrame\Form\Elements\File;
+use MicroFrame\Form\Elements\Hidden;
+use MicroFrame\Form\Elements\Password;
+use MicroFrame\Form\Elements\Range;
+use MicroFrame\Form\Elements\RangeSlider;
+use MicroFrame\Form\Elements\Select;
+use MicroFrame\Form\Elements\Text;
+use MicroFrame\Form\Elements\TextArea;
+use MicroFrame\System\Request;
 
 abstract class Controller
 {
@@ -109,7 +118,7 @@ abstract class Controller
     /**
      * Add element to form
      *
-     * @param FormElement $objElement Element object
+     * @param AbstractElement $objElement AbstractElement object
      *
      * @since 22. February 2014, v. 1.00
      * @return mixed
@@ -123,8 +132,8 @@ abstract class Controller
 
     /**
      * Get element
-     * @param string $strName Element name
-     * @return FormElement|null
+     * @param string $strName AbstractElement name
+     * @return AbstractElement|null
      */
     private function getElement($strName)
     {
@@ -409,7 +418,7 @@ abstract class Controller
      */
     private function setReferer($strReferer)
     {
-        $objHidden = $this->addHiddenField('referer', '');
+        $objHidden = $this->addHiddenField('referer');
         $objHidden->setValue($strReferer);
         $this->strReferer = $strReferer;
     }// setReferer
@@ -438,10 +447,9 @@ abstract class Controller
     private function setPostData($aryPost)
     {
         unset($aryPost['referer']);
-        unset($aryPost[FormElement::ELEMENT_BUTTON]);
-        unset($aryPost[FormElement::ELEMENT_RESET]);
-        unset($aryPost[FormElement::ELEMENT_SUBMIT]);
-        unset($aryPost[FormElement::ELEMENT_SUBMIT]);
+        unset($aryPost[AbstractElement::ELEMENT_BUTTON]);
+        unset($aryPost[AbstractElement::ELEMENT_RESET]);
+        unset($aryPost[AbstractElement::ELEMENT_SUBMIT]);
         foreach($aryPost as $strKey => $strValue)
         {
             $objElement = $this->getElement($strKey);
@@ -473,8 +481,8 @@ abstract class Controller
     /**
      * Set element error to form errors
      *
-     * @param string $strKey Element key
-     * @param string $strError Element error
+     * @param string $strKey AbstractElement key
+     * @param string $strError AbstractElement error
      *
      * @since 25. February 2014, v. 1.00
      * @return string Error given

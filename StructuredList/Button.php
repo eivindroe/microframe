@@ -1,5 +1,5 @@
 <?php
-namespace MicroFrame\Core;
+namespace MicroFrame\StructuredList;
 
 class Button
 {
@@ -173,4 +173,4 @@ class Button
     }// getHtml
 
 
-}// ListButton
+}// Button

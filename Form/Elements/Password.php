@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class Password extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class Password extends AbstractElement
 {
     /**
      * Constructor
@@ -14,7 +16,7 @@ class Password extends FormElement
      */
     public function __construct($strName = '', $strLabel = '')
     {
-        parent::__construct(FormElement::ELEMENT_PASSWORD, $strName, $strLabel);
+        parent::__construct(AbstractElement::ELEMENT_PASSWORD, $strName, $strLabel);
         return $this;
     }// __construct
 

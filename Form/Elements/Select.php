@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class Select extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class Select extends AbstractElement
 {
     /**
      * Select options

@@ -1,5 +1,5 @@
 <?php
-namespace MicroFrame\Core;
+namespace MicroFrame\System;
 
 class Crypt
 {

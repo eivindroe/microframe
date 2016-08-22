@@ -1,5 +1,5 @@
 <?php
-namespace MicroFrame\Core\HtmlList;
+namespace MicroFrame\StructuredList;
 
 class Column
 {
@@ -247,7 +247,7 @@ class Column
      *
      * @since 22. February 2014, v. 1.00
      * @return string Column date format
-     * @TODO Add dateformat validation
+     * @TODO Add date format validation
      */
     public function setDateFormat($strFormat)
     {

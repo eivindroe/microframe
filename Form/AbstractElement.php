@@ -1,10 +1,10 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form;
 
-abstract class FormElement implements Element
+abstract class AbstractElement implements iElement
 {
     /**
-     * Element types
+     * AbstractElement types
      * @var string
      */
     const ELEMENT_HIDDEN    = 'hidden';
@@ -19,31 +19,31 @@ abstract class FormElement implements Element
     const ELEMENT_BUTTON    = 'button';
 
     /**
-     * Element type
+     * AbstractElement type
      * @var string
      */
     private $strType;
 
     /**
-     * Element name
+     * AbstractElement name
      * @var string
      */
     private $strName;
 
     /**
-     * Element label
+     * AbstractElement label
      * @var string
      */
     private $strLabel;
 
     /**
-     * Element value
+     * AbstractElement value
      * @var string
      */
     private $strValue;
 
     /**
-     * Element placeholder
+     * AbstractElement placeholder
      * @var string
      */
     private $strPlaceholder = '';
@@ -55,13 +55,13 @@ abstract class FormElement implements Element
     private $blnRequired = false;
 
     /**
-     * Element attributes
+     * AbstractElement attributes
      * @var array
      */
     private $aryAttributes = array();
 
     /**
-     * Element error
+     * AbstractElement error
      * @var string
      */
     private $strError;
@@ -70,9 +70,9 @@ abstract class FormElement implements Element
     /**
      * Constructor
      *
-     * @param string $strType Element type
-     * @param string $strName Element name
-     * @param string $strLabel Element label
+     * @param string $strType AbstractElement type
+     * @param string $strName AbstractElement name
+     * @param string $strLabel AbstractElement label
      *
      * @since 22. February 2014, v. 1.00
      */
@@ -109,7 +109,7 @@ abstract class FormElement implements Element
      * Get element type
      *
      * @since 22. February 2014, v. 1.00
-     * @return string Element type
+     * @return string AbstractElement type
      */
     public function getType()
     {
@@ -121,7 +121,7 @@ abstract class FormElement implements Element
      * Get element name
      *
      * @since 22. February 2014, v. 1.00
-     * @return string Element name
+     * @return string AbstractElement name
      */
     public function getName()
     {
@@ -133,7 +133,7 @@ abstract class FormElement implements Element
      * Get element label
      *
      * @since 22. February 2014, v. 1.00
-     * @return string Element label
+     * @return string AbstractElement label
      */
     private function getLabel()
     {
@@ -145,7 +145,7 @@ abstract class FormElement implements Element
      * Get element label as html
      *
      * @since 22. February 2014, v. 1.00
-     * @return string Element label as html <label>strLabel</label>
+     * @return string AbstractElement label as html <label>strLabel</label>
      */
     public function getLabelAsHtml()
     {
@@ -161,10 +161,10 @@ abstract class FormElement implements Element
     /**
      * Set element value
      *
-     * @param mixed $mxdValue Element value
+     * @param mixed $mxdValue AbstractElement value
      *
      * @since 22. February 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     public function setValue($mxdValue)
     {
@@ -177,7 +177,7 @@ abstract class FormElement implements Element
      * Get element value
      *
      * @since 22. February 2014, v. 1.00
-     * @return mixed Element value
+     * @return mixed AbstractElement value
      */
     public function getValue()
     {
@@ -189,7 +189,7 @@ abstract class FormElement implements Element
      * Get element value as html
      *
      * @since 22. February 2014, v. 1.00
-     * @return mixed|string Element value as html
+     * @return mixed|string AbstractElement value as html
      */
     public function getValueHtml()
     {
@@ -216,7 +216,7 @@ abstract class FormElement implements Element
      * @param boolean $blnRequired Flag if required
      *
      * @since 22. February 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     public function setRequired($blnRequired)
     {
@@ -246,7 +246,7 @@ abstract class FormElement implements Element
      * @param string $strPlaceholder Placeholder
      *
      * @since 22. February 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     public function setPlaceholder($strPlaceholder)
     {
@@ -262,7 +262,7 @@ abstract class FormElement implements Element
      * Get element placeholder
      *
      * @since 22. February 2014, v. 1.00
-     * @return string Element placeholder
+     * @return string AbstractElement placeholder
      */
     private function getPlaceholder()
     {
@@ -274,7 +274,7 @@ abstract class FormElement implements Element
      * Get element placeholder as html
      *
      * @since 22. February 2014, v. 1.00
-     * @return string Element placeholder as html (placeholder="strPlaceholder")
+     * @return string AbstractElement placeholder as html (placeholder="strPlaceholder")
      */
     public function getPlaceholderHtml()
     {
@@ -290,11 +290,11 @@ abstract class FormElement implements Element
     /**
      * Set element attribute
      *
-     * @param string $strKey Element attribute key
-     * @param string $strValue Element attribute value
+     * @param string $strKey AbstractElement attribute key
+     * @param string $strValue AbstractElement attribute value
      *
      * @since 13. March 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     public function setAttribute($strKey, $strValue)
     {
@@ -306,10 +306,10 @@ abstract class FormElement implements Element
     /**
      * Set element attributes
      *
-     * @param array $aryAttributes Element attributes as single array
+     * @param array $aryAttributes AbstractElement attributes as single array
      *
      * @since 22. February 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     public function setAttributes($aryAttributes)
     {
@@ -325,7 +325,7 @@ abstract class FormElement implements Element
      * Get element attributes
      *
      * @since 22. February 2014, v. 1.00
-     * @return array Element attributes
+     * @return array AbstractElement attributes
      */
     public function getAttributes()
     {
@@ -337,7 +337,7 @@ abstract class FormElement implements Element
      * Get element attributes as html
      *
      * @since 25. February 2014, v. 1.00
-     * @return string Element attributes as html
+     * @return string AbstractElement attributes as html
      */
     public function getAttributesHtml()
     {
@@ -378,7 +378,7 @@ abstract class FormElement implements Element
      * @param boolean $blnDisabled True/false
      *
      * @since 22. February 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     public function setDisabled($blnDisabled)
     {
@@ -397,7 +397,7 @@ abstract class FormElement implements Element
      * @param boolean $blnReadOnly Read only
      *
      * @since 11. March 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     public function setReadOnly($blnReadOnly)
     {
@@ -421,8 +421,8 @@ abstract class FormElement implements Element
     public function validate($strValue)
     {
         $blnValid = true;
-        if($this->isRequired() && $strValue == '' && !in_array($this->getType(), array(FormElement::ELEMENT_SUBMIT,
-                FormElement::ELEMENT_RESET, FormElement::ELEMENT_BUTTON)))
+        if($this->isRequired() && $strValue == '' && !in_array($this->getType(), array(AbstractElement::ELEMENT_SUBMIT,
+                AbstractElement::ELEMENT_RESET, AbstractElement::ELEMENT_BUTTON)))
         {
             $this->setError(_REQUIRE_FIELD);
             $blnValid = false;
@@ -434,10 +434,10 @@ abstract class FormElement implements Element
     /**
      * Set element error
      *
-     * @param $strError Element error
+     * @param $strError AbstractElement error
      *
      * @since 25. February 2014, v. 1.00
-     * @return FormElement
+     * @return AbstractElement
      */
     private function setError($strError)
     {
@@ -450,7 +450,7 @@ abstract class FormElement implements Element
      * Get element error
      *
      * @since 25. February 2014, v. 1.00
-     * @return string Element error
+     * @return string AbstractElement error
      */
     public function getError()
     {
@@ -458,4 +458,4 @@ abstract class FormElement implements Element
     }// getError
 
 
-}// FormElement
+}// AbstractElement

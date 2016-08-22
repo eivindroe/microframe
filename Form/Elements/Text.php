@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class Text extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class Text extends AbstractElement
 {
     /**
      * Constructor
@@ -13,7 +15,7 @@ class Text extends FormElement
      */
     public function __construct($strName = '', $strLabel = '')
     {
-        parent::__construct(FormElement::ELEMENT_TEXT, $strName, $strLabel);
+        parent::__construct(AbstractElement::ELEMENT_TEXT, $strName, $strLabel);
         return $this;
     }// __construct
 

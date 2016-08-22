@@ -1,7 +1,7 @@
 <?php
 namespace MicroFrame\Database;
 
-use MicroFrame\Core\Crypt;
+use MicroFrame\System\Crypt;
 
 class GenericObject
 {
@@ -211,7 +211,7 @@ class GenericObject
      * Save object data to database
      *
      * @since 11. February 2014, v. 1.00
-     * @return void
+     * @return integer
      */
     public function save()
     {

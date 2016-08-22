@@ -1,9 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form;
 
-interface Element
+interface iElement
 {
     public function getName();
     public function getType();
     public function getHtml();
-}// Element
+}// iElement

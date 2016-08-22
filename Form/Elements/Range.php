@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class Range extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class Range extends AbstractElement
 {
     /**
      * Range minimum
@@ -32,7 +34,7 @@ class Range extends FormElement
      */
     public function __construct($strName = '', $strLabel = '')
     {
-        parent::__construct(FormElement::ELEMENT_RANGE, $strName, $strLabel);
+        parent::__construct(AbstractElement::ELEMENT_RANGE, $strName, $strLabel);
         return $this;
     }// __construct
 

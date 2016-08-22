@@ -1,8 +1,8 @@
 <?php
-namespace MicroFrame\Core\HtmlList;
+namespace MicroFrame\StructuredList;
 
-interface ListInterface
+interface iController
 {
     public function loadColumns();
     public function loadContent();
-}// ListInterface
+}// iController

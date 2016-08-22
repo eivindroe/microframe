@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class Button extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class Button extends AbstractElement
 {
     /**
      * Button type

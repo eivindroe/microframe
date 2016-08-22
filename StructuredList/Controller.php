@@ -1,9 +1,7 @@
 <?php
-namespace MicroFrame\Core\HtmlList;
+namespace MicroFrame\StructuredList;
 
-use MicroFrame\Core\Button;
-
-abstract class Controller implements ListInterface
+abstract class Controller implements iController
 {
     /**
      * List name

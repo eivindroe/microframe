@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class RangeSlider extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class RangeSlider extends AbstractElement
 {
     private $intMin = 1;
     private $intMax = 10;
@@ -18,7 +20,7 @@ class RangeSlider extends FormElement
      */
     public function __construct($strName, $strLabel)
     {
-        parent::__construct(FormElement::ELEMENT_RANGE, $strName, $strLabel);
+        parent::__construct(AbstractElement::ELEMENT_RANGE, $strName, $strLabel);
         $this->objLow = new Range($strName . '[low]', $strLabel);
         $this->objHigh = new Range($strName . '[high]', $strLabel);
         return $this;

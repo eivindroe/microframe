@@ -1,8 +1,8 @@
 <?php
 namespace MicroFrame\Database;
 
-interface TableBase
+interface iTable
 {
     public function getTableName();
     public function getTableColumns();
-}// TableBase
+}// iTable

@@ -1,11 +1,11 @@
 <?php
-namespace MicroFrame\Core\HtmlList;
+namespace MicroFrame\StructuredList;
 
 class Row
 {
     /**
-     * List Controller
-     * @var HtmlList
+     * Controller object
+     * @var Controller
      */
     private $objController;
 
@@ -57,14 +57,14 @@ class Row
     /**
      * Constructor
      *
-     * @param HtmlList $objController List controller
+     * @param Controller $objController List controller
      * @param integer $intRow Row index
      * @param array $aryData Row data
      *
      * @since 22. February 2014, v. 1.00
      * @return Row
      */
-    public function __construct(HtmlList $objController, $intRow, $aryData)
+    public function __construct(Controller $objController, $intRow, $aryData)
     {
         $this->objController = $objController;
         $this->intRow = $intRow;
@@ -77,7 +77,7 @@ class Row
      * Get list controller
      *
      * @since 22. February 2014, v. 1.00
-     * @return HtmlList
+     * @return Controller
      */
     private function getController()
     {

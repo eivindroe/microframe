@@ -1,10 +1,7 @@
 <?php
 namespace MicroFrame\Database;
 
-use MicroFrame\Database\TableBase;
-use MicroFrame\Database\Database;
-
-abstract class Table implements TableBase
+abstract class Table implements iTable
 {
     /**
      * Required column constant
@@ -404,4 +401,4 @@ abstract class Table implements TableBase
     }// validateTableColumnContent
 
 
-}// DBTable
+}// Table

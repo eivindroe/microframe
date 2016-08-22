@@ -1,7 +1,9 @@
 <?php
-namespace MicroFrame\Core\Form;
+namespace MicroFrame\Form\Elements;
 
-class TextArea extends FormElement
+use MicroFrame\Form\AbstractElement;
+
+class TextArea extends AbstractElement
 {
     /**
      * Textarea max length
@@ -20,7 +22,7 @@ class TextArea extends FormElement
      */
     public function __construct($strName, $strLabel = '', $intMaxLength = null)
     {
-        parent::__construct(FormElement::ELEMENT_TEXTAREA, $strName, $strLabel);
+        parent::__construct(AbstractElement::ELEMENT_TEXTAREA, $strName, $strLabel);
         $this->intMaxLength = $intMaxLength;
         return $this;
     }// __construct
